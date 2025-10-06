@@ -36,7 +36,7 @@ public class UserServiceImpl implements UserService {
             throw new RuntimeException("Email đã tồn tại!");
         }
 
-        // ✅ Mã hóa mật khẩu trước khi lưu
+        //  Mã hóa mật khẩu trước khi lưu
         user.setPassword(passwordEncoder.encode(user.getPassword()));
 
         return userRepository.save(user);
@@ -49,7 +49,7 @@ public class UserServiceImpl implements UserService {
             user.setEmail(updatedUser.getEmail());
             user.setRole(updatedUser.getRole());
 
-            // ✅ Nếu có cập nhật mật khẩu thì mã hóa lại
+            // Nếu có cập nhật mật khẩu thì mã hóa lại
             if (updatedUser.getPassword() != null && !updatedUser.getPassword().isEmpty()) {
                 user.setPassword(passwordEncoder.encode(updatedUser.getPassword()));
             }
